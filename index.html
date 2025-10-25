@@ -466,6 +466,9 @@
             padding: 40px 0;
             text-align: center;
         }
+        h5{
+            color:var(--secondary-light) ;
+        }
 
         .social-links {
             display: flex;
@@ -588,6 +591,14 @@
                 height: 200px;
             }
         }
+        #typing-text {
+  border-right: 2px solid #000;
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: #000000;
+}
     </style>
 </head>
 <body>
@@ -615,6 +626,7 @@
             <div class="hero-content">
                 <div class="hero-text">
                     <h1>Hi, I'm <span>Wilfred Muriithi</span></h1>
+                    <h1><span id="typing-text"></span></h1>
                     <p>A passionate Computer Science student at Murang'a University of Technology, dedicated to creating innovative web experiences that blend functionality with beautiful design.</p>
                     <div class="hero-btns">
                         <a href="#projects" class="btn">View My Work</a>
@@ -622,7 +634,7 @@
                     </div>
                 </div>
                 <div class="hero-image">
-                    <!-- Replace the src with your actual image URL -->
+                    
                     <img src="profile.jpg" alt="Wilfred Muriithi" class="profile-image">
                 </div>
             </div>
@@ -640,8 +652,8 @@
                     <p>I'm always excited about new challenges, collaborations, and opportunities to grow as a developer and designer.</p>
                     
                     <div class="skills">
-                        <span class="skill">HTML5</span>
-                        <span class="skill">CSS3</span>
+                        <span class="skill">HTML</span>
+                        <span class="skill">CSS</span>
                         <span class="skill">JavaScript</span>
                         <span class="skill">React</span>
                         <span class="skill">UI/UX Design</span>
@@ -765,6 +777,15 @@ The site is fully responsive, SEO-friendly, and designed for a smooth user exper
                                 <p>@_heismuriithi_</p>
                             </div>
                         </div>
+  <div class="contact-item">
+  <div class="contact-icon">
+     <i class="fab fa-whatsapp"></i>
+         </div>
+       <div>
+                                <h4>Whatsapp</h4>
+                                <p>+254796 894 565</p>
+                            </div>
+                        </div>
                         <div class="contact-item">
                             <div class="contact-icon">
                                 <i class="fab font fa-twitter"></i>
@@ -780,11 +801,11 @@ The site is fully responsive, SEO-friendly, and designed for a smooth user exper
                     <form>
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input type="text" id="name" placeholder="Your Name">
+                            <input type="text" id="name" placeholder=" Name">
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" id="email" placeholder="Your Email">
+                            <input type="email" id="email" placeholder=" Email">
                         </div>
                         <div class="form-group">
                             <label for="message">Message</label>
@@ -799,18 +820,54 @@ The site is fully responsive, SEO-friendly, and designed for a smooth user exper
 
     <!-- Footer -->
     <footer>
+        <h5>Feel Free To Contact Me Anytime</h5>
         <div class="container">
             <div class="social-links">
                 <a href="https://github.com/Wizlymuriish/Wizlymuriish/" target="_blank"><i class="fab fa-github"></i></a>
                 <a href="https://www.linkedin.com/in/wilfred-muriithi-88a460335/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
                 <a href="https://x.com/WMuriithiw85" target="_blank"><i class="fab fa-twitter"></i></a>
                 <a href="https://www.instagram.com/_heismuriithi_/?hl=en" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/+254796894565" target="_blank"><i class="fab fa-whatsapp"></i></a>
             </div>
             <p class="copyright">© 2025 Wilfred Muriithi. All rights reserved.</p>
         </div>
     </footer>
 
     <script>
+        const texts = [ "A Web Developer","UI/UX Designer", "A Web Designer"];
+const typingElement = document.getElementById("typing-text");
+let textIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+
+function typeEffect() {
+  const currentText = texts[textIndex];
+  if (isDeleting) {
+    typingElement.textContent = currentText.substring(0, charIndex--);
+  } else {
+    typingElement.textContent = currentText.substring(0, charIndex++);
+  }
+     
+
+  if (!isDeleting && charIndex === currentText.length + 1) {
+    isDeleting = true;
+    setTimeout(typeEffect, 700); // Pause at end
+    return;
+  }
+
+  if (isDeleting && charIndex === 0) {
+    isDeleting = false;
+    textIndex = (textIndex + 1) % texts.length;
+  }
+
+  setTimeout(typeEffect, isDeleting ? 50 : 100); // Typing speed
+}
+
+document.addEventListener("DOMContentLoaded", typeEffect);
+
+
+
+document.addEventListener("DOMContentLoaded", typeText);
         // Mobile Navigation Toggle
         const hamburger = document.querySelector('.hamburger');
         const navLinks = document.querySelector('.nav-links');
@@ -857,7 +914,6 @@ The site is fully responsive, SEO-friendly, and designed for a smooth user exper
 </body>
 
 </html>
-
 
 
 
